@@ -27,21 +27,27 @@ random.setstate
 
 #2. 모델구성
 model = Sequential()
-model.add(Dense(1, input_dim=1))
+model.add(Dense(10, input_dim=1))
+model.add(Dense(7))
+model.add(Dense(5))
+model.add(Dense(3))
+model.add(Dense(1))                                                                                                         ))
+
+
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x, y, epochs=100, batch_size=1)
+model.fit(x_train, y_train, epochs=100, batch_size=1)
 
 #4. 평가, 예측
-loss = model.evaluate(x, y)
+loss = model.evaluate(x_test, y_test)
 print('loss : ', loss)
-
 
 y_predict = model.predict(x)
 print('x의 예측값 : ', y_predict)
 
 
+#5. R2
 from sklearn.metrics import r2_score
 r2 = r2_score(y_test, y_predict)
 print("r2스코어 : ", r2)
